@@ -1,0 +1,24 @@
+{
+  "name": "React-Form-Fields",
+  "version": "1.0.0",
+  "description": "React-Form-Fields",
+  "main": "gulpfile.js",
+  "js": {
+    "src": "./scripts/src/",
+    "dist": "./scripts/dist",
+    "file": "app.js"
+  },
+  "devDependencies": {
+    "browserify": "^11.1.0",
+    "envify": "^3.4.0",
+    "express": "^4.13.3",
+    "gulp": "3.9.x",
+    "gulp-livereload": "^3.8.0",
+    "gulp-watch": "^4.1.1",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "reactify": "^1.1.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
