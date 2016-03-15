@@ -1,18 +1,27 @@
 # React Form Fields
 
-Form fields packaged into a react class, supports validation, cross-browser supported placeholders, url parameter autofill, relationships and HTML5 form attribute polyfils.
+Form fields packaged into a react class, supports validation, url parameter autofill, relationships and HTML5 polyfill for placeholders
 
-To support cross-browser supported placeholders add class (explain)
+For HTML5 placeholder polyfill versioning is defined in the DOM using conditional comments, to support <IE9 include these in your html:
+```
+	<!--[if lt IE 7 ]> <html class="ie ie6"> <![endif]-->
+	<!--[if IE 7 ]>    <html class="ie ie7"> <![endif]-->
+	<!--[if IE 8 ]>    <html class="ie ie8"> <![endif]-->
+	<!--[if IE 9 ]>    <html class="ie ie9"> <![endif]-->
+	<!--[if (gt IE 9)|!(IE)]><!--><html><!--<![endif]-->
+```
 
 ## Usage
 
 ### Text input
 ```javascript
+var Input = require('react-form-fields');
 ReactDOM.render(
 	<Input
 		tag="input" 
 		validation="alphanumeric" 
 		errorMsg="This field is required and only accepts alpha numeric characters" 
+		required={true} 
 		attributes={{
 			type: 'text',
 			placeholder: 'Alpha numeric text input',
@@ -26,16 +35,17 @@ ReactDOM.render(
 
 ### Checkbox input
 ```javascript
+var Input = require('react-form-fields');
 ReactDOM.render(
 	<Input
 		tag="input" 
-		validation="alphanumeric" 
-		errorMsg="This field is required and only accepts alpha numeric characters" 
+		errorMsg="This field is required" 
+		required={true} 
 		attributes={{
-			type: 'text',
-			placeholder: 'Alpha numeric text input',
+			type: 'checkbox',
 			name: 'my-input',
-			id: 'my-input'
+			id: 'my-input',
+			value: 'agreed to terms'
 		}}
 	/>,
 	document.getElementById('react-form-field')
@@ -44,17 +54,26 @@ ReactDOM.render(
 
 ### Radios
 ```javascript
+var Input = require('react-form-fields');
 ReactDOM.render(
 	<Input
 		tag="input" 
-		validation="alphanumeric" 
-		errorMsg="This field is required and only accepts alpha numeric characters" 
 		attributes={{
-			type: 'text',
-			placeholder: 'Alpha numeric text input',
+			type: 'radio',
 			name: 'my-input',
 			id: 'my-input'
-		}}
+		}} 
+		options={[
+			{
+				value: 'option-1',
+				label: 'Option 1'
+			},
+			{
+				value: 'option-2',
+				label: 'Option 2'
+			}
+		]} 
+		legend="My Radios"
 	/>,
 	document.getElementById('react-form-field')
 );
@@ -62,14 +81,38 @@ ReactDOM.render(
 
 ### Select
 ```javascript
+var Input = require('react-form-fields');
 ReactDOM.render(
 	<Input
-		tag="input" 
-		validation="alphanumeric" 
-		errorMsg="This field is required and only accepts alpha numeric characters" 
+		tag="select" 
 		attributes={{
-			type: 'text',
-			placeholder: 'Alpha numeric text input',''
+			placeholder: 'Please select an option',
+			name: 'my-input',
+			id: 'my-input'
+		}} 
+		options={[
+			{
+				value: 'option-1',
+				label: 'Option 1'
+			},
+			{
+				value: 'option-2',
+				label: 'Option 2'
+			}
+		]} 
+	/>,
+	document.getElementById('react-form-field')
+);
+```
+
+### Textarea
+```javascript
+var Input = require('react-form-fields');
+ReactDOM.render(
+	<Input
+		tag="textarea" 
+		attributes={{
+			placeholder: 'Alpha numeric text input',
 			name: 'my-input',
 			id: 'my-input'
 		}}
@@ -78,20 +121,60 @@ ReactDOM.render(
 );
 ```
 
-### Textarea
-```javascript
+### Form validation example
+```
+var Input = require('react-form-fields');
+var Form = React.createClass({
+
+	// .....
+
+	validate: function(e){
+		e.preventDefault();
+		var self = this,
+			valid = true,
+			inputs = Object.keys(this.refs).filter(function(key) {
+				return key.indexOf('react-form-field-') == 0;
+			}).reduce(function(data, key) {
+				data[key] = self.refs[key];
+				return data;
+			}, {});
+		for(var key in inputs) {
+			if(!inputs[key].validate()) {
+				valid = false;
+			}
+		}
+		if(!valid) {
+			e.preventDefault();
+		} else {
+			// its valid
+		}
+	},
+
+	render: function(){
+		return (
+			<form onSubmit={this.validate}>
+				<Input
+					ref="react-form-field-1" 
+					tag="input" 
+					validation="email" 
+					errorMsg="Please enter a valid email address" 
+					required={true} 
+					attributes={{
+						type: 'text',
+						placeholder: 'Your email',
+						name: 'email',
+						id: 'email'
+					}}
+				/>
+				<button type="submit">Submit</button>
+			</form>
+		);
+	}
+
+});
+
 ReactDOM.render(
-	<Input
-		tag="input" 
-		validation="alphanumeric" 
-		errorMsg="This field is required and only accepts alpha numeric characters" 
-		attributes={{
-			type: 'text',
-			placeholder: 'Alpha numeric text input',
-			name: 'my-input',
-			id: 'my-input'
-		}}
-	/>,
+	<Form />,
 	document.getElementById('react-form-field')
 );
 ```
@@ -104,9 +187,9 @@ Type: `string`
 
 Default: `input`
 
-Options: `input`, `select`, `textarea`, `radio`
+Options: `input`, `select`, `textarea`
 
-Determines the type of form field, if using input specify the attribute type as text or checkbox
+Determines the type of form field, if using input specify the attribute type as text, radio or checkbox
 
 #### errorMsg
 
