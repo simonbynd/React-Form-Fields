@@ -1,10 +1,45 @@
 {
-  "name": "React-Form-Fields",
-  "version": "1.0.0",
-  "description": "React-Form-Fields",
+  "name": "react-form-fields",
+  "description": "Form fields packaged into a react class, supports validation, url parameter autofill, relationships and HTML5 polyfill for placeholders",
+  "homepage": "http://www.simonstaton.co.uk/",
+  "keywords": [
+    "react",
+    "form",
+    "fields",
+    "input",
+    "validation",
+    "placeholder",
+    "polyfill",
+    "regexp"
+  ],
+  "author": "Simon Staton <simon.staton@live.co.uk>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/simonstaton/React-Form-Fields.git"
+  },
   "main": "index.js",
+  "version": "0.1.0",
   "devDependencies": {
     "react": "^0.14.7",
     "react-dom": "^0.14.7"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/simonstaton/React-Form-Fields/blob/master/LICENSE"
+    }
+  ],
+  "files": [
+    "index.js",
+    "LICENSE",
+    "README.md"
+  ],
+  "bugs": {
+    "url": "https://github.com/simonstaton/React-Form-Fields/issues"
+  },
+  "maintainers": [
+    "simonstaton <simon.staton@live.co.uk>"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
-}

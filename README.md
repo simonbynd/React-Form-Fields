@@ -2,6 +2,10 @@
 
 Form fields packaged into a react class, supports validation, url parameter autofill, relationships and HTML5 polyfill for placeholders
 
+```
+npm install react-form-fields
+```
+
 For HTML5 placeholder polyfill versioning is defined in the DOM using conditional comments, to support <IE9 include these in your html:
 ```
 	<!--[if lt IE 7 ]> <html class="ie ie6"> <![endif]-->
