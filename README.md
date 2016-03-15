@@ -7,12 +7,12 @@ npm install react-form-fields
 ```
 
 For HTML5 placeholder polyfill versioning is defined in the DOM using conditional comments, to support <IE9 include these in your html:
-```
-	<!--[if lt IE 7 ]> <html class="ie ie6"> <![endif]-->
-	<!--[if IE 7 ]>    <html class="ie ie7"> <![endif]-->
-	<!--[if IE 8 ]>    <html class="ie ie8"> <![endif]-->
-	<!--[if IE 9 ]>    <html class="ie ie9"> <![endif]-->
-	<!--[if (gt IE 9)|!(IE)]><!--><html><!--<![endif]-->
+```html
+<!--[if lt IE 7 ]> <html class="ie ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html><!--<![endif]-->
 ```
 
 ## Usage
@@ -126,7 +126,7 @@ ReactDOM.render(
 ```
 
 ### Form validation example
-```
+```javascript
 var Input = require('react-form-fields');
 var Form = React.createClass({
 
