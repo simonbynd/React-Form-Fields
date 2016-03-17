@@ -18,6 +18,9 @@
     "url": "git://github.com/simonstaton/React-Form-Fields.git"
   },
   "main": "index.js",
+  "browserify": {
+    "transform": ["reactify"]
+  },
   "version": "0.1.2",
   "devDependencies": {
     "react": "^0.14.7",
