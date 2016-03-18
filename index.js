@@ -31,6 +31,9 @@ module.exports = React.createClass({
 		required: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.bool]),
 		validation: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
 		onChange: React.PropTypes.func,
+		onBlur: React.PropTypes.func,
+		onFocus: React.PropTypes.func,
+		onValidate: React.PropTypes.func,
 		options: React.PropTypes.array,
 		legend: React.PropTypes.string
 	},
@@ -114,6 +117,9 @@ module.exports = React.createClass({
 				isValid = false;
 			}
 		}
+		if (this.props.onValidate) {
+			this.props.onValidate(isValid);
+		}
 		this.setState({ valid: isValid });
 		return isValid;
 	},
@@ -128,12 +134,18 @@ module.exports = React.createClass({
 		if (this.state.value == this.props.attributes.placeholder) {
 			this.setState({ value: '' });
 		}
+		if (this.props.onFocus) {
+			this.props.onFocus(event);
+		}
 	},
 	handleBlur: function handleBlur(event) {
 		this.validate(event.target.value);
 		if (!this.isOldie || !this.props.attributes.placeholder || this.props.attributes.type != 'text') return;
 		if (this.state.value == '') {
 			this.setState({ value: this.props.attributes.placeholder });
+		}
+		if (this.props.onBlur) {
+			this.props.onBlur(event);
 		}
 	},
 	render: function render() {

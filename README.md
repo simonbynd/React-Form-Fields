@@ -257,6 +257,24 @@ Type: `function`
 
 A callback function for change events, callback contains event object
 
+#### onBlur
+
+Type: `function`
+
+A callback function for blur events, callback contains event object
+
+#### onFocus
+
+Type: `function`
+
+A callback function for focus events, callback contains event object
+
+#### onValidate
+
+Type: `function`
+
+A callback function to be fired when field is validated, callback contains valid boolean
+
 #### legend
 
 Type: `string`
