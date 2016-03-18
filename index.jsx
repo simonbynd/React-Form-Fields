@@ -142,12 +142,12 @@ module.exports = React.createClass({
 	},
 	handleBlur: function(event){
 		this.validate(event.target.value);
+		if(this.props.onBlur) {
+			this.props.onBlur(event);
+		}
 		if(!this.isOldie || !this.props.attributes.placeholder || this.props.attributes.type != 'text') return;
 		if(this.state.value == ''){
 			this.setState({value: this.props.attributes.placeholder});
-		}
-		if(this.props.onBlur) {
-			this.props.onBlur(event);
 		}
 	},
 	render: function(){
