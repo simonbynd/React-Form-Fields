@@ -19,9 +19,9 @@ For HTML5 placeholder polyfill versioning is defined in the DOM using conditiona
 
 ### Text input
 ```javascript
-var Input = require('react-form-fields');
+var FormFields = require('react-form-fields');
 ReactDOM.render(
-	<Input
+	<FormFields
 		tag="input" 
 		validation="alphanumeric" 
 		errorMsg="This field is required and only accepts alpha numeric characters" 
@@ -39,9 +39,9 @@ ReactDOM.render(
 
 ### Checkbox input
 ```javascript
-var Input = require('react-form-fields');
+var FormFields = require('react-form-fields');
 ReactDOM.render(
-	<Input
+	<FormFields
 		tag="input" 
 		errorMsg="This field is required" 
 		required={true} 
@@ -58,9 +58,9 @@ ReactDOM.render(
 
 ### Radios
 ```javascript
-var Input = require('react-form-fields');
+var FormFields = require('react-form-fields');
 ReactDOM.render(
-	<Input
+	<FormFields
 		tag="input" 
 		attributes={{
 			type: 'radio',
@@ -85,9 +85,9 @@ ReactDOM.render(
 
 ### Select
 ```javascript
-var Input = require('react-form-fields');
+var FormFields = require('react-form-fields');
 ReactDOM.render(
-	<Input
+	<FormFields
 		tag="select" 
 		attributes={{
 			placeholder: 'Please select an option',
@@ -111,9 +111,9 @@ ReactDOM.render(
 
 ### Textarea
 ```javascript
-var Input = require('react-form-fields');
+var FormFields = require('react-form-fields');
 ReactDOM.render(
-	<Input
+	<FormFields
 		tag="textarea" 
 		attributes={{
 			placeholder: 'Alpha numeric text input',
@@ -127,7 +127,7 @@ ReactDOM.render(
 
 ### Form validation example
 ```javascript
-var Input = require('react-form-fields');
+var FormFields = require('react-form-fields');
 var Form = React.createClass({
 
 	// .....
@@ -157,7 +157,7 @@ var Form = React.createClass({
 	render: function(){
 		return (
 			<form onSubmit={this.validate}>
-				<Input
+				<FormFields
 					ref="react-form-field-1" 
 					tag="input" 
 					validation="email" 
