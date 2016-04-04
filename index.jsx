@@ -98,6 +98,9 @@ module.exports = React.createClass({
 		var value = typeof(newValue) !== 'undefined' ? newValue : (this.state.value ? this.state.value : ''),
 			isValid = true,
 			required = typeof this.props.required == 'string' ? (this.props.required == 'false' ? false : true) : this.props.required;
+		if(this.isOldie && value == this.props.attributes.placeholder) {
+			value = '';
+		}
 		if(this.props.validation){
 			if(this.props.validation instanceof RegExp){
 				isValid = this.props.validation.test(value);

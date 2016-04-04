@@ -18,7 +18,7 @@
     "url": "git://github.com/simonstaton/React-Form-Fields.git"
   },
   "main": "index.js",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "devDependencies": {
     "react": "^0.14.7",
     "react-dom": "^0.14.7"
